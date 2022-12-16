@@ -1,25 +1,30 @@
-import logo from './logo.svg';
+import React from 'react';
+import { Switch } from 'react-router-dom';
+import { BrowserRouter as Router,Route} from "react-router-dom";
 import './App.css';
+import "./components/home.scss"
+import UserRegistrationForm from "./components/userregistration-form"
+import Login from "./components/login-form"
+import Headers from "./components/headers"
+import ForgetPassword from './components/forgetPassword-form';
+import Home from "./components/home"
 
-function App() {
+function App(){
+  
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Headers/>
+      <Router>
+        <Switch>
+        <Route exact path="/"><Login/></Route>
+          <Route  path="/userregistration"><UserRegistrationForm/></Route>
+          <Route  path="/home"><Home/></Route>
+          <Route  path="/forgetPassword"><ForgetPassword/></Route>
+          {/* <Route path="/AddressBookForm/:perId"><AddressBookForm/></Route> */}
+        </Switch>
+      </Router>
     </div>
   );
-}
+  }
 
-export default App;
+export default App
