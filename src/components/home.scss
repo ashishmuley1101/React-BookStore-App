@@ -70,8 +70,8 @@ html body {
   .header-content {
     display: flex;
     flex-direction: row;
-    justify-content: center;
-    align-items:flex-end;
+    justify-content: space-between;
+    align-items: center;
     width: 80%;
     margin: 0 auto;
     padding-bottom: 25px;
@@ -97,13 +97,13 @@ html body {
   }
   
   .table-main {
-    width: 100%;
+    width: 80%;
     margin: 0 auto;
     overflow: auto;
   }
   
   .table {
-    width: 80%;
+    width: 90%;
     margin: 0 auto;
     border-collapse: separate;
     border-spacing: 0 15px;
@@ -111,14 +111,14 @@ html body {
   }
   
   td, th {
-    text-align: left;
+    text-align: center;
     padding: 5px 8px;
   }
   
   th {
     background: #42515F 0% 0% no-repeat padding-box;
     border-radius: 3px 3px 0px 0px;
-    text-align: left;
+    text-align: center;
     font: normal normal mediun 18px/24px Roboto;
     letter-spacing: 0px;
     color: #FFFFFF;
@@ -163,55 +163,4 @@ html body {
     display: inline-block;
     font-weight: 300;
     margin-bottom: 8px;
-  }
- .layou1{
-  top: 0px;
-  left: 0px;
-  width: 1366px;
-  height: 1322px;
- }
-  .ui1{
-    background: #FFFFFF 0% 0% no-repeat padding-box;
-    border: 1px solid #E2E2E2;
-    opacity: 1;
-  }
-  header1{
-  top: 0px;
-  left: 0px;
-  width: 1366px;
-  height: 60px;
-  }
-
-  uihead1{
-    background: #A03037 0% 0% no-repeat padding-box;
-   opacity: 1;
-  }
-
-  cardLayout{
-    top: 132px;
-    left: 174px;
-    width: 235px;
-    height: 315px;
-  }
-
-  cardui{
-    background: #FFFFFF 0% 0% no-repeat padding-box;
-    border: 1px solid #E2E2E2;
-    border-radius: 3px;
-    opacity: 1;
-  }
-
-  .book{
-    width: 100%;
-    margin: 3rem;
-  }
-
-  .book-box{
-    display: flex;
-    flex-wrap: wrap;
-    align-content: stretch;
-    background-color: background-paper;
-    gap: 2.5rem;
-    margin-left: 0.5rem;
-    margin-top: 0rem;
   }

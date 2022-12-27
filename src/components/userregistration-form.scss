@@ -43,11 +43,14 @@ body {
 
 .form-content {
     min-height: calc(100% - 80px);
-    background-color: #f7f7f7;
+    background-color: #ffffff;
     display: flex;
-    justify-content:center;
-    align-items: center;
+    justify-content:space-around;
+    align-items:flex-end;
     border: 0px solid lightblue;
+    position:relative;
+    top: 70px;
+   
 }
 
 .form {

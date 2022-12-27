@@ -1,18 +1,14 @@
-import { useState, useEffect } from 'react'
-import { Link, useParams } from 'react-router-dom'
+import { useState} from 'react'
 import './userregistration-form.scss'
 import cardImg from "../assets/image2.jpg"
 import Swal from 'sweetalert2'
 import Button from '@mui/material/Button'
 import { Stack, Box } from '@mui/material';
 import TextField from '@mui/material/TextField';
-import MenuItem from '@mui/material/MenuItem';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardMedia from '@mui/material/CardMedia';
 import UserService from "../services/UserService";
-
-
 
 function UserRegistrationForm() {
 
@@ -131,20 +127,43 @@ function UserRegistrationForm() {
             UserService
                 .userRegistration(userObject).then(response => {
                     console.log(" Success Data ", response.data.data);
+                    // console.log(response.data.data.message)
+                    try {
+                        if (response.data.data !== 'Email id already register with another user..!') {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Error!',
+                                text: 'Email id already register with another user..!',
+                                showConfirmButton: true
+                            });
+                            
+                        } else {
+                            
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Registration Successfully.!',
+                                text: `Please Check Your Mailbox for Verification.`,
+                                html: '<b>Please Check Your Mailbox for Verification.</b><br>' +
+                                    '<b>Click on below Link for Login. </b><br><br>' +
+                                    '<a href="//localhost:3000"> Login Page</a>',
+                                showConfirmButton: false,
+                            })
+                            
+                        }
 
-                    return Swal.fire({
-                        icon: 'success',
-                        title: 'Registration Successfully.!',
-                        text: `Please Check Your Mailbox for Verification.`,
-                        html:'<b>Please Check Your Mailbox for Verification.</b><br>' +
-                             '<b>Click on below Link for Login. </b><br><br>' +
-                             '<a href="//localhost:3000"> Login Page</a>',
-                        showConfirmButton: false,                                            
-                    })
-                    
+                    } catch (err) {
+                        console.log(" From catch block Error Incorrect Fields..!");
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error!',
+                            text: 'Check all fields again.!',
+                            showConfirmButton: true
+                        });
+
+                    }
                 }).catch(error => {
                     console.log("Error Incorrect Fields..!");
-                    return Swal.fire({
+                    Swal.fire({
                         icon: 'error',
                         title: 'Error!',
                         text: 'Check all fields again.!',
@@ -219,7 +238,7 @@ function UserRegistrationForm() {
                                     <TextField type="password" name="password" fullWidth variant='outlined'
                                         placeholder="Enter Your Password" id="password" label="Password" required
                                         value={formValue.password} onChange={onnameChange}
-                                    helperText="Enter Password  Min. 8 Characters contain 1 Spl. Char., 1 Cap. Alphabet and 1 Digit." 
+                                        helperText="Enter Password  Min. 8 Characters contain 1 Spl. Char., 1 Cap. Alphabet and 1 Digit."
                                     />
                                 </div>&nbsp;
 

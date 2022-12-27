@@ -117,18 +117,33 @@ function Login() {
             UserService
                 .userLogin(loginObject).then(response => {
 
-                    console.log(" Success Data ", response.data.data);
-                    localStorage.setItem('token',response.data.data.token)
-                    console.log("Get token : ",localStorage.getItem('token'))
+                    try {
+                        console.log(" Success Data ", response.data.data);
+                        localStorage.setItem('token', response.data.data.token)
+                        localStorage.setItem('name', response.data.data.firstName)
+                        localStorage.setItem('id', response.data.data.userId)
+                        console.log("Get token : ", localStorage.getItem('token'))
+                        console.log("First Name : ", localStorage.getItem('name'))
+                        console.log("User id : ", localStorage.getItem('id'))
 
-                    return Swal.fire({
-                        icon: 'success',
-                        title: 'Login Successfully.!',
-                        text: `'Welcome to Book Store.`,
-                        showConfirmButton: false,
-                        timer: 2500,
-                        
-                    })
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Login Successfully.!',
+                            text: `'Welcome to Book Store.`,
+                            showConfirmButton: false,
+                            timer: 1500,
+
+                        })
+                        history.push("/home")
+                    } catch (err) {
+                        console.log("Error Incorrect Fields..!");
+                        return Swal.fire({
+                            icon: 'error',
+                            title: 'Error!',
+                            text: 'Incorrect Email or Passwaord..!',
+                            showConfirmButton: true
+                        })
+                    }
                 }).catch(error => {
                     console.log("Error Incorrect Fields..!");
                     return Swal.fire({
@@ -139,7 +154,7 @@ function Login() {
                     });
 
                 })
-                history.push("/home")
+
         }
 
     }
@@ -165,7 +180,7 @@ function Login() {
                                     title="Person Address Form"
                                     image={cardImg}
                                 />
-                                
+
                                 <div style={{
                                     position: "absolute", fontSize: "32px", color: "white", bottom: 70, right: "7%",
                                     fontFamily: "-moz-initial", transform: "translateX(10%)",
@@ -186,16 +201,16 @@ function Login() {
                                 <div class="row-content">
                                     <TextField type="password" name="password" fullWidth variant='outlined'
                                         placeholder="Enter Your Password" id="password" label="Password" required
-                                        value={formValue.password} onChange={onnameChange} 
+                                        value={formValue.password} onChange={onnameChange}
                                     />
                                 </div>&nbsp;
 
                                 <div class="row-content">
-                                   
-                                      <Button variant="contained" color="secondary" fullWidth size='large'
+
+                                    <Button variant="contained" color="secondary" fullWidth size='large'
                                         onClick={onSubmit}>LOGIN
-                                      </Button>
-                                   
+                                    </Button>
+
 
                                 </div>&nbsp;
 
@@ -205,13 +220,13 @@ function Login() {
 
                                         <Link to="/forgetPassword" style={{ textDecoration: 'none' }}>
                                             <Button variant="outlined" color="secondary" size="large" sx={{ justifyContent: "center" }}
-                                                 >Forget Password ?
+                                            >Forget Password ?
                                             </Button>
                                         </Link>
 
                                         <Link to="/userregistration" style={{ textDecoration: 'none' }}>
                                             <Button variant="outlined" color="secondary" size="large"
-                                                >NEW REGISTRATION
+                                            >NEW REGISTRATION
                                             </Button>
                                         </Link>
 
